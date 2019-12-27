@@ -218,3 +218,14 @@ end
 
 fprintf('Program paused. Press enter to continue.\n');
 pause;
+
+%% =========== Part 9: Computing test set error =============
+%  For this optional (ungraded) exercise, you should 
+% compute the test error using the best value of  you found. 
+% In our cross validation, we obtained a test error of 3.8599 for lambda=3
+%
+
+%%%%%%%%% Add your code to compute the test error below %%%%%%%%%%%
+lambda=3;
+theta=trainLinearReg(X_poly,y,lambda);
+error_test=linearRegCostFunction(X_poly_test,ytest,theta,0)
