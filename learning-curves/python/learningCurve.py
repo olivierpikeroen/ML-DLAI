@@ -20,11 +20,11 @@ def learningCurve(X,y,Xval,yval,Lambda):
         error_val.append(linearRegCostFunction(Xval,yval,theta,0)[0])
     return np.array(error_train),np.array(error_val)
 
-def plotLearningCurve(n_it,error_train,error_val):
+def plotLearningCurve(n_it_rng,error_train,error_val):
     """
     Plot learning curve
     """
-    plt.plot(range(n_it),error_train,error_val)
+    plt.plot(n_it_rng,error_train,n_it_rng,error_val)
     plt.legend(('Train', 'Cross Validation'))
     plt.xlabel('Number of training examples')
     plt.ylabel('Error')

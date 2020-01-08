@@ -1,4 +1,5 @@
-import numpy as  np 
+import numpy as np
+import matplotlib.pyplot as plt
 from trainLinearReg import *
 from linearRegCostFunction import *
 
@@ -17,3 +18,11 @@ def validationCurve(X,y,Xval,yval):
         error_train.append(linearRegCostFunction(X,y,theta,0)[0])
         error_val.append(linearRegCostFunction(Xval,yval,theta,0)[0])
     return lambda_vec,error_train,error_val
+
+def plotValidationCurve(lambda_vec,error_train,error_val):
+    plt.plot(lambda_vec,error_train,lambda_vec,error_val)
+    plt.legend(('Train', 'Cross Validation'))
+    plt.xlabel(r'$\lambda$')
+    plt.ylabel('Error')
+    l=np.array(lambda_vec)
+    plt.xscale('symlog',linthreshx=l[l!=0].min())

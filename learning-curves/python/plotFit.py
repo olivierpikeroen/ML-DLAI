@@ -1,5 +1,5 @@
 import numpy as np 
-from featureNormalize import *
+from polyFeatures import *
 from plotData import *
 
 def plotFit(X,y,mu,sigma,theta,p):
@@ -14,5 +14,7 @@ def plotFit(X,y,mu,sigma,theta,p):
     x=np.arange(np.min(X)-15,np.max(X)+25,0.05)[:,np.newaxis]
     # Map the X values 
     X_poly,_,_=polyFeatureNormalize(x,p,mu=mu,sigma=sigma)
+    # Add ones
+    X_poly=np.hstack((np.ones((X_poly.shape[0],1)),X_poly))
     # Plot
     plotData(x,X_poly@theta,'--',linewidth=2)
